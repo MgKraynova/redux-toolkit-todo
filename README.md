@@ -1,3 +1,11 @@
+
+План:
+1) список тудушек отображается. Берем изначальные туду из стора
+2) кнопка добавить туду
+3) кнопка удалить туду
+4) грузить туду из апи?
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
