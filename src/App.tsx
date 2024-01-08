@@ -3,11 +3,12 @@ import "./App.css";
 import { TodoList } from "./features/todo-list/todo-list";
 import { useState } from "react";
 import { TODO_ACTION, TTodoState } from "./store/todos.reducer";
+import { RootState } from "./main";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
 
-  const todos = useSelector((state: TTodoState) => state.todos);
+  const todos = useSelector((state: RootState) => state.todo).todos;
 
   const dispatch = useDispatch();
 

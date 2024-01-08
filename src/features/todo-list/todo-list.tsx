@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { TODO_ACTION, TTodoState } from "../../store/todos.reducer";
+import { RootState } from "../../main";
 
 export const TodoList = () => {
-  const todos = useSelector((state: TTodoState) => state.todos);
+  const todos = useSelector((state: RootState) => state.todo.todos);
 
+  console.log("todos", todos);
   const dispatch = useDispatch();
 
   const handleDeleteTodo = (id: number) => {
@@ -18,9 +20,9 @@ export const TodoList = () => {
   return (
     <div>
       <ol>
-        {todos.map((todo) => (
+        {todos.map((todo, index) => (
           <li style={{ display: "flex" }} key={todo.id}>
-            <p>{todo.body}</p>
+            <p>{index + 1}. {todo.body}</p>
             <button onClick={() => handleDeleteTodo(todo.id)}>
               Удалить туду
             </button>
