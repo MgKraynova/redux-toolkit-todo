@@ -4,6 +4,7 @@ import { TodoList } from "./features/todo-list/todo-list";
 import { useState } from "react";
 import { TODO_ACTION, TTodoState } from "./store/todos.reducer";
 import { RootState } from "./main";
+import { UsersList } from "./features/users-list/users-list";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
@@ -38,6 +39,7 @@ function App() {
         placeholder="Введи туду"
       />
       <button onClick={handleAddTodo}>Добавить туду</button>
+      <UsersList />
     </>
   );
 }

@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { TODO_ACTION, TTodoState } from "../../store/todos.reducer";
+import { TODO_ACTION } from "../../store/todos.reducer";
 import { RootState } from "../../main";
 
 export const TodoList = () => {
   const todos = useSelector((state: RootState) => state.todo.todos);
 
-  console.log("todos", todos);
   const dispatch = useDispatch();
 
   const handleDeleteTodo = (id: number) => {
