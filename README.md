@@ -1,12 +1,4 @@
-
-План:
-0) сначала сделать на redux + saga, потом переписать на тулкит
-1) список тудушек отображается. Берем изначальные туду из стора
-2) кнопка добавить туду
-3) кнопка удалить туду
-4) грузить туду из апи?
-
-# 
+# Redux Toolkit Todo
 
 ## Цель проекта
 Проект был создан, чтобы изучить Redux Toolkit и разобраться, насколько трудозатратна миграция с Redux на Redux Toolkit.
@@ -15,40 +7,8 @@
 Сначала с помощью чистого Redux была написала логика для создания и удаления тудушек. 
 Также с помощью redux, redux-saga и axios была написана логика для получения списка юзеров из апи.
 
-Далее логика работы тудушек была переписана с использованием библиотеки Redux Toolkit.
+Далее логика работы тудушек и получения списка пользователей была переписана с использованием библиотеки Redux Toolkit.
 
 ## Использованные технологии:
 
 React, TypeScript, Vite, Redux, Redux-saga, Axios, Redux Toolkit.
-
-
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
