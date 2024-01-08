@@ -7,5 +7,7 @@ const axiousInstance = axios.create({
 });
 
 export async function getUsers(): Promise<TUser[]> {
-  return await axiousInstance.get("/users").then((res) => res.data);
+  return await axiousInstance
+    .get("/users")
+    .then((res) => Promise.resolve(res.data));
 }

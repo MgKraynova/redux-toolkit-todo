@@ -1,19 +1,14 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../main";
-import { USERS_ACTION } from "../../store/users.reducers";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { fetchUsersStarted } from "./users-list-slice";
 
 export const UsersList = () => {
-  const { users, isError, isLoading } = useSelector(
-    (state: RootState) => state.users
-  );
+  const { users, isError, isLoading } = useAppSelector((state) => state.users);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch({
-      type: USERS_ACTION.SET_GET_USERS_IS_LOADING,
-    });
+    dispatch(fetchUsersStarted());
   }, []);
 
   return (

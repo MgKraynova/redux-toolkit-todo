@@ -3,6 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export enum REDUX_TOOLKIT_SLICE_NAMES {
   TODOS = "TODOS",
+  USERS = 'USERS'
 }
 
 export type TTodoState = {

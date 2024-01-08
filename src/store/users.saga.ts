@@ -1,16 +1,22 @@
 import { call, put, takeEvery } from "redux-saga/effects";
-import { USERS_ACTION } from "./users.reducers";
 import { getUsers } from "../api/get-users.api";
+import {
+  fetchUsersFailed,
+  fetchUsersStarted,
+  fetchUsersSucceeded,
+} from "../features/users-list/users-list-slice";
+import { TUser } from "../types/user.type";
 
 function* fetchUser() {
   try {
-    const users: ReturnType<typeof getUsers> = yield call(getUsers);
-    yield put({ type: USERS_ACTION.SET_GET_USERS_SUCCESS, payload: { users } });
+    const users: TUser[] = yield call(getUsers);
+
+    yield put(fetchUsersSucceeded(users));
   } catch (e) {
-    yield put({ type: USERS_ACTION.SET_GET_USERS_ERROR });
+    yield put(fetchUsersFailed());
   }
 }
 
 export function* userSaga() {
-  yield takeEvery(USERS_ACTION.SET_GET_USERS_IS_LOADING, fetchUser);
+  yield takeEvery(fetchUsersStarted.type, fetchUser);
 }
