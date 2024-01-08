@@ -1,19 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { TODO_ACTION } from "../../store/todos.reducer";
-import { RootState } from "../../main";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { todoDeleted } from "./todo-list-slice";
 
 export const TodoList = () => {
-  const todos = useSelector((state: RootState) => state.todo.todos);
+  const todos = useAppSelector((state) => state.todo.todos);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleDeleteTodo = (id: number) => {
-    dispatch({
-      type: TODO_ACTION.DELETE_TODO,
-      payload: {
-        todoIdToDelete: id,
-      },
-    });
+    dispatch(todoDeleted(id));
   };
 
   return (
@@ -21,7 +15,9 @@ export const TodoList = () => {
       <ol>
         {todos.map((todo, index) => (
           <li style={{ display: "flex" }} key={todo.id}>
-            <p>{index + 1}. {todo.body}</p>
+            <p>
+              {index + 1}. {todo.body}
+            </p>
             <button onClick={() => handleDeleteTodo(todo.id)}>
               Удалить туду
             </button>
