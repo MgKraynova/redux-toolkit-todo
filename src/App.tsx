@@ -1,30 +1,26 @@
-import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import { TodoList } from "./features/todo-list/todo-list";
 import { useState } from "react";
-import { TODO_ACTION, TTodoState } from "./store/todos.reducer";
-import { RootState } from "./main";
 import { UsersList } from "./features/users-list/users-list";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { todoAdded } from "./features/todo-list/todo-list-slice";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
 
-  const todos = useSelector((state: RootState) => state.todo).todos;
+  const todos = useAppSelector((state) => state.todo.todos);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleAddTodo = () => {
-    dispatch({
-      type: TODO_ACTION.ADD_TODO,
-      payload: {
-        newTodo: {
-          userId: 1,
-          id: todos.length ? todos[todos.length - 1].id + 1 : 1,
-          title: inputValue,
-          body: inputValue,
-        },
-      },
-    });
+    dispatch(
+      todoAdded({
+        userId: 1,
+        id: todos.length ? todos[todos.length - 1].id + 1 : 1,
+        title: inputValue,
+        body: inputValue,
+      })
+    );
   };
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
